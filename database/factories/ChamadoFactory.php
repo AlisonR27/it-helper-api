@@ -21,6 +21,7 @@ class ChamadoFactory extends Factory
             'id_usuario' => $this->faker->numberBetween(1, \App\Models\User::count()),
             'titulo' => $this->faker->sentence,
             'descricao' => $this->faker->sentence,
+            'status' => $this->faker->randomElement(["Aberto", "Aguardando", "Em Andamento", "Concluido"]),
             'prioridade' => $this->faker->randomElement([1,2,3,4]),
             'fechado_em' => $this->faker->dateTime,
             'departamento_id' => $this->faker->numberBetween(1, \App\Models\Departamento::count())
