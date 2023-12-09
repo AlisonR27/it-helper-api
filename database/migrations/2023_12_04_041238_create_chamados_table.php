@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('departamento_id');
+            $table->string('status');
             $table->string('titulo');
             $table->string('descricao',350);
             $table->integer('prioridade')->default(0);
-            $table->timestamp('fechado_em');
+            $table->timestamp('fechado_em')->nullable();
             $table->timestamps();
             $table->foreign('id_usuario')->references('id')->on('usuarios');
             $table->foreign('departamento_id')->references('id')->on('departamentos');
