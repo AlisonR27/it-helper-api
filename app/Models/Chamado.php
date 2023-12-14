@@ -22,11 +22,16 @@ class Chamado extends Model
     public function createdBy() {
         return $this->hasOne(User::class, 'id', 'id_usuario');
     }
-    public function acoes() : HasMany {
+    public function acoes(){
         return $this->hasMany(HistoricoAcao::class, 'id_chamado', 'id');
     }
-    public function equipamentos(): BelongsToMany {
+    public function equipamentos()
+    {
         return $this->belongsToMany(Equipamentos::class);
+    }
+    public function tecnicos() 
+    {
+        return $this->hasManu(Tecnico::class, 'id_chamado', 'id');
     }
     public function anexos() 
     {

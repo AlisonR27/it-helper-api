@@ -11,10 +11,11 @@ class HistoricoAcao extends Model
     protected $table = 'historico_acoes';
     
     protected $fillable = [
+        'id_chamado',
         'tipo_acao',
         'descricao'
     ];
-
+    
     public function chamado()
     {
         return $this>belongsTo(Chamado::class, 'id_chamado', 'id');

@@ -12,9 +12,13 @@ class Departamento extends Model
     protected $fillable = [
         'nome',
     ];
-
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
     public function chamados()
     {
         return $this->hasMany(Chamado::class);
     }
 }
+
