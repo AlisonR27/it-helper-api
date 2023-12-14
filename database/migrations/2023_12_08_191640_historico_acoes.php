@@ -14,10 +14,11 @@ return new class extends Migration
         //
         Schema::create('historico_acoes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_chamado')->constrained('chamados');
+            $table->unsignedBigInteger('id_chamado');
             $table->string('tipo_acao');
             $table->text('descricao')->nullable();
             $table->timestamps();
+            $table->foreign('id_chamado')->references('id')->on('chamados');
         });
     }
 
