@@ -20,8 +20,8 @@ class ChamadoController extends Controller
             return response()->json($chamados);
         } else {
             // Caso tenha Query
-            $user_id = $request['id_funcionario'];
-            $chamados = DB::table('chamados')->where('id_funcionario', $user_id)->get();
+            $user_id = $request['id_usuario'];
+            $chamados = DB::table('chamados')->where('id_usuario', $user_id)->get();
             return response()->json($chamados,200);
         }
     }
@@ -31,17 +31,19 @@ class ChamadoController extends Controller
      */
     public function store(Request $request)
     {
+        
         $chamado = Chamado::create($request->all());
+        // $anexos = $request
 
         return response()->json($chamado, 201);
     }
-
+ 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        $chamado = Chamado::with('createdBy')->find($id);
+        $chamado = Chamado::with('createdBy')->with('acoes')->with('departamento')->find($id);
 
         if (!$chamado) {
             return response()->json(['message' => 'Chamado não encontrado'], 404);
